@@ -546,11 +546,92 @@ li{margin:6px 0}
   padding: 18px 18px;
 }
 
+/* Members map */
+.members-map-wrap{
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid rgba(0,0,0,.10);
+}
+
+.members-map-section{
+  padding-top: 24px;
+  padding-bottom: 20px;
+}
+
+.members-map-wrap--hero{
+  margin-top: 0;
+  padding: 16px;
+  border: 1px solid rgba(0,0,0,.10);
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: var(--shadow);
+}
+
+.members-map-wrap h4{
+  margin: 0 0 6px;
+}
+
+.members-map-wrap h2{
+  margin: 0 0 6px;
+}
+
+.members-map{
+  width: 100%;
+  height: 380px;
+  margin-top: 10px;
+  border: 1px solid rgba(0,0,0,.12);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.members-outside-europe{
+  margin-top: 10px;
+}
+
+.map-popup-list{
+  margin: 6px 0 0;
+  padding-left: 18px;
+}
+
+.map-popup-list a{
+  text-decoration: underline;
+}
+
+.map-pin-wrapper{
+  background: transparent;
+  border: 0;
+}
+
+.map-pin{
+  --pin: #5F295F;
+  width: 22px;
+  height: 22px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--pin);
+  border: 2px solid #fff;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  box-shadow: 0 4px 10px rgba(0,0,0,.28);
+}
+
+.map-pin-core{
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+}
+
 /* se vuoi un po’ più aria su desktop */
 @media (min-width: 900px){
   .panel-inner{
     padding: 24px 24px;
   }
+}
+
+@media (max-width: 640px){
+  .members-map{height:300px}
 }
 
 

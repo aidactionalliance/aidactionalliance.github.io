@@ -8,6 +8,18 @@
   <meta name="description" content="AID Action Alliance (AAA) — Multi-institutional research on Data Science & AI for global and societal challenges." />
 
   <link rel="stylesheet" href="./css/styles.css" />
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""
+  />
+  <script
+    defer
+    src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+    integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+    crossorigin=""
+  ></script>
   <script defer src="./js/app.js"></script>
 </head>
 <body>
@@ -55,6 +67,14 @@
           <a class="btn btn-ghost" href="#contact">Contact us</a>
         </div>
       </div> -->
+    </section>
+
+    <section class="section members-map-section" aria-label="Members map">
+      <div class="container">
+        <div class="members-map-wrap members-map-wrap--hero">
+          <div id="members-europe-map" class="members-map" role="region" aria-label="Mappa Europa con membri per paese"></div>
+          </div>
+      </div>
     </section>
 
     <!-- INTRO -->
@@ -218,6 +238,7 @@
               <div class="cards">
                 <article class="card"><h4>Edge Hill University (UK)</h4></article>
                 <article class="card"><h4><a href="https://sites.google.com/view/idealabunicalit/" target="_blank" rel="noreferrer noopener">Università della Calabria (iDEA Lab) (IT)</a></h4></article>
+                <article class="card"><h4><a href="https://habes.cs.unisa.it/" target="_blank" rel="noreferrer noopener">Unviersità degli Studi di Salerno (HABES Lab) (IT)</a></h4></article>
                 <article class="card"><h4><a href="https://www.durham.ac.uk/" target="_blank" rel="noreferrer noopener">Durham University (SwaCI Lab) (UK)</a></h4></article>
                 <article class="card"><h4><a href="https://eaal.edu.gr/en/" target="_blank" rel="noreferrer noopener">Euro Academy of Active Learning (GR)</a></h4></article>
                 <article class="card"><h4><a href="https://www.hevs.ch/en/applied-research/research-institute-informatics/conex-lab/" target="_blank" rel="noreferrer noopener">HES-SO Valais–Wallis (ConEx Lab) (CH)</a></h4></article>
@@ -237,19 +258,17 @@
             </button>
             <div class="acc-panel" role="region" hidden>
               <ul class="cols-3">
-                <li><a href="https://research.edgehill.ac.uk/en/persons/nik-bessis" target="_blank" rel="noreferrer noopener">Professor Nik Bessis, Project Lead (Chair), Edge Hill University, UK</a></li>
-                <li><a href="https://www.ulster.ac.uk/staff/g-talbot" target="_blank" rel="noreferrer noopener">Professor George Talbot, Edge Hill University, UK</a></li>
-                <li><a href="https://research.edgehill.ac.uk/en/persons/rebecca-monk" target="_blank" rel="noreferrer noopener">Dr Rebecca Monk, Edge Hill University, UK</a></li>
-
-                <li><a href="https://research.edgehill.ac.uk/en/persons/philippa-holloway-2" target="_blank" rel="noreferrer noopener">Dr Philippa Holloway, Edge Hill University, UK</a></li>
                 <li><a href="https://sites.google.com/unical.it/cuzzocrea/" target="_blank" rel="noreferrer noopener">Professor Alfredo Cuzzocrea, Università della Calabria, Italy</a></li>
-                <li><a href="https://www.durham.ac.uk/staff/farshad-arvin/" target="_blank" rel="noreferrer noopener">Professor Farshad Arvin, Durham University, UK</a></li>
-
-                <li><a href="https://sites.google.com/site/eleanaasimakopoulou/" target="_blank" rel="noreferrer noopener">Dr Eleana Asimakopoulou, Euro Academy of Active Learning, Greece</a></li>
-                <li><a href="https://iuk-business-connect.org.uk/people/dr-dawn-geatches/" target="_blank" rel="noreferrer noopener">Dr Dawn Geatches, Business Connect / Innovate UK, UK</a></li>
                 <li><a href="https://scholar.google.com/citations?user=Fri4gKsAAAAJ&hl=en" target="_blank" rel="noreferrer noopener">Dr Antonio Jara, Libelium Lab, Spain</a></li>
-
+                <li><a href="https://docenti.unisa.it/030400/home" target="_blank" rel="noreferrer noopener">Professor Christian Esposito, Università degli Studi di Salerno, Italy</a></li>
+                <li><a href="https://iuk-business-connect.org.uk/people/dr-dawn-geatches/" target="_blank" rel="noreferrer noopener">Dr Dawn Geatches, Business Connect / Innovate UK, UK</a></li>
+                <li><a href="https://sites.google.com/site/eleanaasimakopoulou/" target="_blank" rel="noreferrer noopener">Dr Eleana Asimakopoulou, Euro Academy of Active Learning, Greece</a></li>
+                <li><a href="https://www.durham.ac.uk/staff/farshad-arvin/" target="_blank" rel="noreferrer noopener">Professor Farshad Arvin, Durham University, UK</a></li>
+                <li><a href="https://www.ulster.ac.uk/staff/g-talbot" target="_blank" rel="noreferrer noopener">Professor George Talbot, Edge Hill University, UK</a></li>
                 <li><a href="https://www.ulster.ac.uk/staff/kj-curran" target="_blank" rel="noreferrer noopener">Professor Kevin Curran, Ulster University, UK</a></li>
+                <li><a href="https://research.edgehill.ac.uk/en/persons/nik-bessis" target="_blank" rel="noreferrer noopener">Professor Nik Bessis, Project Lead (Chair), Edge Hill University, UK</a></li>
+                <li><a href="https://research.edgehill.ac.uk/en/persons/philippa-holloway-2" target="_blank" rel="noreferrer noopener">Dr Philippa Holloway, Edge Hill University, UK</a></li>
+                <li><a href="https://research.edgehill.ac.uk/en/persons/rebecca-monk" target="_blank" rel="noreferrer noopener">Dr Rebecca Monk, Edge Hill University, UK</a></li>
                 <li><a href="https://origin.warestack.com/" target="_blank" rel="noreferrer noopener">Dr Stelios Sotiriadis, Warestack Inc., USA</a></li>
                 <li><span class="muted">Additional members as per the original page.</span></li>
               </ul>

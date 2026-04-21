@@ -125,4 +125,81 @@ document.querySelectorAll('[data-accordion]').forEach((acc) => {
       form.reset();
     });
   }
+
+  // Map: members by European country
+  const mapEl = document.getElementById('members-europe-map');
+  if (mapEl && window.L) {
+    const map = L.map(mapEl, {
+      zoomControl: true,
+      scrollWheelZoom: false
+    }).setView([50.0, 10.0], 3);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const createPinIcon = (color) => L.divIcon({
+      className: 'map-pin-wrapper',
+      html: `<span class="map-pin" style="--pin:${color}"><span class="map-pin-core"></span></span>`,
+      iconSize: [22, 30],
+      iconAnchor: [11, 30],
+      popupAnchor: [0, -26]
+    });
+
+    const countryMembers = [
+      {
+        country: 'United Kingdom',
+        coords: [54.5, -2.5],
+        color: '#2E7D32',
+        institutions: [
+          { name: 'Business Connect / Innovate UK', url: 'https://iuk-business-connect.org.uk/' },
+          { name: 'Durham University', url: 'https://www.durham.ac.uk/' },
+          { name: 'Edge Hill University', url: 'https://www.edgehill.ac.uk/' },
+          { name: 'Ulster University', url: 'https://www.ulster.ac.uk/' }
+        ]
+      },
+      {
+        country: 'Italy',
+        coords: [42.5, 12.5],
+        color: '#C62828',
+        institutions: [
+          { name: 'Universita della Calabria', url: 'https://www.unical.it/' },
+          { name: 'Universita degli Studi di Salerno', url: 'https://www.unisa.it/' }
+        ]
+      },
+      {
+        country: 'Greece',
+        coords: [39.1, 22.9],
+        color: '#1565C0',
+        institutions: [
+          { name: 'Euro Academy of Active Learning', url: 'https://eaal.edu.gr/en/' }
+        ]
+      },
+      {
+        country: 'Spain',
+        coords: [40.3, -3.7],
+        color: '#EF6C00',
+        institutions: [
+          { name: 'Libelium Lab', url: 'https://libelium.com/' }
+        ]
+      }
+    ];
+
+    const bounds = L.latLngBounds(countryMembers.map(({ coords }) => coords));
+    map.fitBounds(bounds.pad(0.8), { maxZoom: 4 });
+
+    countryMembers.forEach(({ country, coords, institutions, color }) => {
+      const uniqueInstitutions = Array.from(
+        new Map(institutions.map((item) => [item.name, item])).values()
+      );
+      const institutionsList = uniqueInstitutions
+        .map(({ name, url }) => `<li><a href="${url}" target="_blank" rel="noreferrer noopener">${name}</a></li>`)
+        .join('');
+
+      L.marker(coords, { icon: createPinIcon(color) })
+        .addTo(map)
+        .bindPopup(`<strong>${country}</strong><ul class="map-popup-list">${institutionsList}</ul>`);
+    });
+  }
 })();
